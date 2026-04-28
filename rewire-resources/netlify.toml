@@ -1,0 +1,8 @@
+[build]
+  publish = "public"
+  functions = "netlify/functions"
+
+[[redirects]]
+  from = "/api/send-resource"
+  to = "/.netlify/functions/send-resource"
+  status = 200
