@@ -1,4 +1,5 @@
 {
+  "outputDirectory": "public",
   "functions": {
     "api/send-resource.js": {
       "maxDuration": 10
