@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Brand Resources — Rewire Your Brand</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #080C18;
+      --bg2:      #0D1326;
+      --bg3:      #111827;
+      --blue:     #3B82F6;
+      --blue-dim: #1D4ED8;
+      --white:    #FFFFFF;
+      --gray:     #8C9BB4;
+      --border:   #1A2442;
+      --pad:      clamp(24px, 5vw, 80px);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(8,12,24,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px var(--pad);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo-icon {
+      width: 38px; height: 38px; background: var(--blue); border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Lato', sans-serif; font-weight: 900; font-size: 20px; color: #fff;
+    }
+    .nav-logo-text { font-weight: 600; font-size: 15px; color: var(--white); letter-spacing: 0.03em; }
+    .nav-cta {
+      background: var(--blue); color: #fff; font-weight: 600; font-size: 14px;
+      padding: 10px 22px; border-radius: 8px; text-decoration: none; transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--blue-dim); }
+
+    /* ── HERO ── */
+    .hero { text-align: center; padding: 100px var(--pad) 80px; max-width: 820px; margin: 0 auto; }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.3);
+      color: var(--blue); font-size: 13px; font-weight: 500; letter-spacing: 0.08em;
+      padding: 6px 16px; border-radius: 100px; margin-bottom: 32px; text-transform: uppercase;
+    }
+    .hero h1 {
+      font-family: 'Lato', sans-serif; font-weight: 900;
+      font-size: clamp(36px, 6vw, 64px); line-height: 1.1;
+      letter-spacing: -0.02em; margin-bottom: 24px;
+    }
+    .hero h1 span { color: var(--blue); }
+    .hero p { font-size: clamp(16px, 2vw, 19px); color: var(--gray); max-width: 580px; margin: 0 auto 40px; line-height: 1.7; }
+    .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--blue); color: #fff; font-weight: 600; font-size: 15px;
+      padding: 14px 28px; border-radius: 10px; text-decoration: none;
+      transition: background 0.2s, transform 0.15s; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--blue-dim); transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent; color: var(--white); font-weight: 500; font-size: 15px;
+      padding: 14px 28px; border-radius: 10px; border: 1px solid var(--border);
+      text-decoration: none; transition: border-color 0.2s, transform 0.15s; display: inline-block;
+    }
+    .btn-ghost:hover { border-color: var(--blue); transform: translateY(-1px); }
+
+    .divider { height: 1px; background: var(--border); max-width: 1200px; margin: 0 auto; }
+
+    /* ── SECTIONS ── */
+    section { padding: 80px var(--pad); max-width: 1200px; margin: 0 auto; }
+    .section-label { font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+    .section-title { font-family: 'Lato', sans-serif; font-weight: 900; font-size: clamp(28px, 4vw, 44px); line-height: 1.15; margin-bottom: 16px; }
+    .section-title span { color: var(--blue); }
+    .section-sub { color: var(--gray); font-size: 17px; max-width: 560px; margin-bottom: 52px; line-height: 1.65; }
+
+    /* ── RESOURCE CARDS ── */
+    .resources-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
+    .resource-card {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: 16px;
+      padding: 32px 28px; display: flex; flex-direction: column; gap: 16px;
+      transition: border-color 0.2s, transform 0.2s; cursor: pointer; position: relative; overflow: hidden;
+    }
+    .resource-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--blue); opacity: 0; transition: opacity 0.2s;
+    }
+    .resource-card:hover { border-color: rgba(59,130,246,0.4); transform: translateY(-3px); }
+    .resource-card:hover::before { opacity: 1; }
+    .resource-icon { width: 48px; height: 48px; background: rgba(59,130,246,0.12); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+    .resource-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); background: rgba(59,130,246,0.1); padding: 3px 10px; border-radius: 100px; width: fit-content; }
+    .resource-card h3 { font-family: 'Lato', sans-serif; font-weight: 700; font-size: 19px; line-height: 1.3; color: var(--white); }
+    .resource-card p { color: var(--gray); font-size: 14px; line-height: 1.65; flex: 1; }
+    .resource-link { display: flex; align-items: center; gap: 6px; color: var(--blue); font-size: 14px; font-weight: 500; margin-top: 4px; }
+    .resource-link svg { transition: transform 0.2s; }
+    .resource-card:hover .resource-link svg { transform: translateX(3px); }
+
+    /* ── BOOKING ── */
+    .booking-section { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .booking-inner { max-width: 1200px; margin: 0 auto; padding: 80px var(--pad); display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; align-items: start; }
+    @media (max-width: 860px) { .booking-inner { grid-template-columns: 1fr; gap: 40px; } }
+    .booking-perks { display: flex; flex-direction: column; gap: 16px; }
+    .perk { display: flex; align-items: flex-start; gap: 14px; }
+    .perk-dot { width: 8px; height: 8px; background: var(--blue); border-radius: 50%; margin-top: 7px; flex-shrink: 0; }
+    .perk p { color: var(--gray); font-size: 15px; line-height: 1.6; }
+    .perk strong { color: var(--white); }
+    .booking-widget { background: var(--bg3); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; min-height: 600px; }
+    .booking-widget iframe { width: 100%; height: 680px; border: none; display: block; }
+
+    /* ── ABOUT ── */
+    .about-section {
+      max-width: 1200px; margin: 0 auto;
+      padding: 80px var(--pad);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    @media (max-width: 780px) {
+      .about-section { grid-template-columns: 1fr; gap: 36px; }
+    }
+    .about-image-wrap {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .about-image {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.88) saturate(0.9);
+    }
+    .about-image-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(59,130,246,0.15) 0%, transparent 60%);
+      border: 1px solid rgba(59,130,246,0.25);
+      border-radius: 20px;
+      pointer-events: none;
+    }
+    .about-handle { color: var(--blue); font-weight: 500; text-decoration: none; font-size: 15px; }
+    .about-handle:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer { border-top: 1px solid var(--border); padding: 32px var(--pad); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; max-width: 1200px; margin: 0 auto; }
+    footer p { color: var(--gray); font-size: 13px; }
+    footer a { color: var(--gray); text-decoration: none; }
+    footer a:hover { color: var(--blue); }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 999;
+      background: rgba(4, 7, 18, 0.85);
+      backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal {
+      background: var(--bg2); border: 1px solid var(--border); border-radius: 20px;
+      padding: 40px; max-width: 440px; width: 100%;
+      transform: translateY(16px); transition: transform 0.25s;
+      position: relative;
+    }
+    .modal-overlay.open .modal { transform: translateY(0); }
+    .modal-close {
+      position: absolute; top: 18px; right: 20px; background: none; border: none;
+      color: var(--gray); font-size: 22px; cursor: pointer; line-height: 1; padding: 4px;
+    }
+    .modal-close:hover { color: var(--white); }
+    .modal-icon { font-size: 36px; margin-bottom: 16px; }
+    .modal-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 10px; }
+    .modal h2 { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 22px; margin-bottom: 10px; color: var(--white); line-height: 1.3; }
+    .modal p { color: var(--gray); font-size: 14px; line-height: 1.65; margin-bottom: 24px; }
+    .modal-form { display: flex; flex-direction: column; gap: 12px; }
+    .modal-input {
+      background: var(--bg3); border: 1px solid var(--border); border-radius: 10px;
+      color: var(--white); font-family: 'Poppins', sans-serif; font-size: 15px;
+      padding: 13px 16px; outline: none; transition: border-color 0.2s; width: 100%;
+    }
+    .modal-input:focus { border-color: var(--blue); }
+    .modal-input::placeholder { color: #3A4A6A; }
+    .modal-submit {
+      background: var(--blue); color: #fff; font-family: 'Poppins', sans-serif;
+      font-weight: 600; font-size: 15px; padding: 14px; border-radius: 10px;
+      border: none; cursor: pointer; transition: background 0.2s; width: 100%;
+    }
+    .modal-submit:hover:not(:disabled) { background: var(--blue-dim); }
+    .modal-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+    .modal-note { font-size: 12px; color: #3A4A6A; text-align: center; margin-top: 4px; }
+    .modal-success { text-align: center; display: none; }
+    .modal-success .success-icon { font-size: 48px; margin-bottom: 16px; }
+    .modal-success h3 { font-family: 'Lato', sans-serif; font-weight: 900; font-size: 20px; color: var(--white); margin-bottom: 10px; }
+    .modal-success p { color: var(--gray); font-size: 14px; line-height: 1.65; }
+    .modal-error { color: #F87171; font-size: 13px; text-align: center; display: none; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-icon">R</div>
+      <span class="nav-logo-text">REWIRE YOUR BRAND</span>
+    </a>
+    <a href="#book" class="nav-cta">Book a Call</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero reveal">
+    <div class="hero-pill">
+      <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#3B82F6"/></svg>
+      Free Resources for Founders
+    </div>
+    <h1>Everything you need to build a brand <span>AI can't replicate</span></h1>
+    <p>Templates, frameworks, and tools to help you find your voice, define your positioning, and show up consistently — before the feed gets even noisier.</p>
+    <div class="hero-actions">
+      <a href="#resources" class="btn-primary">Browse Free Resources</a>
+      <a href="#book" class="btn-ghost">Work With Me →</a>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- RESOURCES -->
+  <section id="resources">
+    <div class="reveal">
+      <div class="section-label">Free Resources</div>
+      <h2 class="section-title">Grab what you <span>need</span></h2>
+      <p class="section-sub">No fluff. These are the same frameworks I use with every client. Enter your email and I'll send the PDF straight to you.</p>
+    </div>
+
+    <div class="resources-grid reveal">
+
+      <div class="resource-card" onclick="openModal('brand-voice-framework','🧠','Framework','Brand Voice Framework','The 3-pillar system — Tone, Positioning, Message — to build a brand AI can\'t replicate.')">
+        <div class="resource-icon">🧠</div>
+        <div class="resource-tag">Framework</div>
+        <h3>Brand Voice Framework</h3>
+        <p>The exact 3-pillar system I use to define brand voice for founders. Includes worksheets for each pillar.</p>
+        <div class="resource-link">Get Free PDF <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="#3B82F6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+
+      <div class="resource-card" onclick="openModal('brand-audit-checklist','✅','Checklist','Brand Audit Checklist','Find out if AI would classify your brand as signal — or noise. Takes 5 minutes.')">
+        <div class="resource-icon">✅</div>
+        <div class="resource-tag">Checklist</div>
+        <h3>Brand Audit Checklist</h3>
+        <p>10 questions to find out if your brand has a detectable voice — or if AI would classify you as noise.</p>
+        <div class="resource-link">Get Free PDF <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="#3B82F6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+
+      <div class="resource-card" onclick="openModal('content-pillars-template','🎯','Template','Content Pillars Template','Map out the topics your brand owns. Stop posting randomly. Start building a feed that compounds.')">
+        <div class="resource-icon">🎯</div>
+        <div class="resource-tag">Template</div>
+        <h3>Content Pillars Template</h3>
+        <p>Map out the 3–5 content pillars your brand owns. Stop posting randomly. Start building a feed that compounds.</p>
+        <div class="resource-link">Get Free PDF <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="#3B82F6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+
+      <div class="resource-card" onclick="openModal('ai-brand-voice-prompts','🤖','Prompt Pack','AI Brand Voice Prompt Pack','15 prompts to make AI write in your voice — not a generic AI voice.')">
+        <div class="resource-icon">🤖</div>
+        <div class="resource-tag">Prompt Pack</div>
+        <h3>AI Brand Voice Prompt Pack</h3>
+        <p>15 prompts to train ChatGPT or Claude to write in your voice. Built for founders who use AI but want to stay distinct.</p>
+        <div class="resource-link">Get Free PDF <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="#3B82F6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+
+      <div class="resource-card" onclick="openModal('instagram-carousel-formula','📱','Guide','Instagram Carousel Formula','The exact 7-slide structure behind every carousel that compounds.')">
+        <div class="resource-icon">📱</div>
+        <div class="resource-tag">Guide</div>
+        <h3>Instagram Carousel Formula</h3>
+        <p>The exact 7-slide structure I use for every carousel. Includes slide-by-slide breakdown with examples.</p>
+        <div class="resource-link">Get Free PDF <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="#3B82F6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+
+      <div class="resource-card" onclick="openModal('positioning-swipe-file','💬','Swipe File','Brand Positioning Swipe File','Real positioning statements that work. Steal the structure, not the words.')">
+        <div class="resource-icon">💬</div>
+        <div class="resource-tag">Swipe File</div>
+        <h3>Brand Positioning Swipe File</h3>
+        <p>Real positioning statements from founders who get it right. Steal the structure, not the words.</p>
+        <div class="resource-link">Get Free PDF <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="#3B82F6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- BOOKING -->
+  <div class="booking-section" id="book">
+    <div class="booking-inner">
+      <div class="booking-left reveal">
+        <div class="section-label">Work With Me</div>
+        <h2 class="section-title">Book a <span>Brand Strategy</span> Call</h2>
+        <p class="section-sub" style="margin-bottom:32px;">45 minutes. No fluff. We'll look at your brand, identify the gaps, and leave you with a clear direction — whether we work together or not.</p>
+        <div class="booking-perks">
+          <div class="perk"><div class="perk-dot"></div><p><strong>Brand Voice Audit</strong> — I'll tell you exactly what's working, what's noise, and what to fix first.</p></div>
+          <div class="perk"><div class="perk-dot"></div><p><strong>Positioning Review</strong> — We'll figure out the angle only you can own.</p></div>
+          <div class="perk"><div class="perk-dot"></div><p><strong>Content Direction</strong> — You'll leave knowing what to post, how to say it, and why it matters.</p></div>
+          <div class="perk"><div class="perk-dot"></div><p><strong>No pitch</strong> — This is a strategy call, not a sales call. If we're a fit, great. If not, you still win.</p></div>
+        </div>
+      </div>
+      <div class="booking-right reveal">
+        <div class="booking-widget">
+          <iframe src="https://api.leadconnectorhq.com/widget/bookings/rewireyourbrand" title="Book a Brand Strategy Call" loading="lazy" allow="payment"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="about-section reveal">
+    <div class="about-image-wrap">
+      <img src="/isaac.png" alt="Isaac De Persig" class="about-image" />
+      <div class="about-image-overlay"></div>
+    </div>
+    <div class="about-content">
+      <div class="section-label">About</div>
+      <h2 class="section-title" style="font-size:clamp(26px,3.5vw,38px);margin-bottom:16px;">Built by <span>Isaac De Persig</span></h2>
+      <p style="color:var(--gray);font-size:16px;line-height:1.75;margin-bottom:24px;">
+        I help founders build brands that are impossible to ignore — and impossible to replicate.
+        In a world where AI can produce anything, your voice is the only moat left.
+        These resources are what I give every client on day one.
+      </p>
+      <a href="https://instagram.com/isaacdpersig" target="_blank" class="about-handle">@isaacdpersig on Instagram →</a>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <footer>
+    <p>© 2026 Rewire Your Brand. All rights reserved.</p>
+    <div style="display:flex;gap:24px;">
+      <a href="https://instagram.com/isaacdpersig" target="_blank">Instagram</a>
+      <a href="#book">Book a Call</a>
+      <a href="#resources">Resources</a>
+    </div>
+  </footer>
+
+  <!-- EMAIL CAPTURE MODAL -->
+  <div class="modal-overlay" id="modal" onclick="closeModalOnOverlay(event)">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+
+      <div id="modal-form-view">
+        <div class="modal-icon" id="modal-icon">🧠</div>
+        <div class="modal-tag" id="modal-tag">Framework</div>
+        <h2 id="modal-title">Brand Voice Framework</h2>
+        <p id="modal-desc">Enter your email and I'll send the PDF straight to your inbox.</p>
+        <div class="modal-form">
+          <input class="modal-input" type="email" id="modal-email" placeholder="your@email.com" />
+          <button class="modal-submit" id="modal-btn" onclick="submitDownload()">Send me the PDF →</button>
+          <div class="modal-error" id="modal-error">Something went wrong. Please try again.</div>
+          <p class="modal-note">No spam. Just the PDF. Unsubscribe anytime.</p>
+        </div>
+      </div>
+
+      <div class="modal-success" id="modal-success">
+        <div class="success-icon">📬</div>
+        <h3>Check your inbox!</h3>
+        <p>The PDF is on its way. If you don't see it in a minute, check your spam folder.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentResource = '';
+
+    function openModal(resource, icon, tag, title, desc) {
+      currentResource = resource;
+      document.getElementById('modal-icon').textContent  = icon;
+      document.getElementById('modal-tag').textContent   = tag;
+      document.getElementById('modal-title').textContent = title;
+      document.getElementById('modal-desc').textContent  = desc + ' Enter your email and I\'ll send the PDF straight to your inbox.';
+      document.getElementById('modal-email').value = '';
+      document.getElementById('modal-error').style.display  = 'none';
+      document.getElementById('modal-form-view').style.display = 'block';
+      document.getElementById('modal-success').style.display   = 'none';
+      document.getElementById('modal-btn').disabled = false;
+      document.getElementById('modal-btn').textContent = 'Send me the PDF →';
+      document.getElementById('modal').classList.add('open');
+      setTimeout(() => document.getElementById('modal-email').focus(), 300);
+    }
+
+    function closeModal() { document.getElementById('modal').classList.remove('open'); }
+    function closeModalOnOverlay(e) { if (e.target === document.getElementById('modal')) closeModal(); }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    async function submitDownload() {
+      const email = document.getElementById('modal-email').value.trim();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        document.getElementById('modal-email').focus();
+        document.getElementById('modal-email').style.borderColor = '#F87171';
+        setTimeout(() => document.getElementById('modal-email').style.borderColor = '', 1500);
+        return;
+      }
+
+      const btn = document.getElementById('modal-btn');
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      document.getElementById('modal-error').style.display = 'none';
+
+      try {
+        const res = await fetch('/api/send-resource', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, resource: currentResource }),
+        });
+        if (!res.ok) throw new Error('Failed');
+        document.getElementById('modal-form-view').style.display = 'none';
+        document.getElementById('modal-success').style.display   = 'block';
+      } catch {
+        btn.disabled = false;
+        btn.textContent = 'Send me the PDF →';
+        document.getElementById('modal-error').style.display = 'block';
+      }
+    }
+
+    // Allow Enter key in email field
+    document.getElementById('modal-email').addEventListener('keydown', e => {
+      if (e.key === 'Enter') submitDownload();
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.08 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+  </script>
+</body>
+</html>
